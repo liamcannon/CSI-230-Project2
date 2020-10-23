@@ -9,4 +9,5 @@
 -found something called --badnames for useradd
 -wrote check outside of functions useradd --badnames
 -added user check and password reset
+-fixed issue with ssh
 
