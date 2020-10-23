@@ -28,14 +28,11 @@ randompaswd() {
 for l in $(cat $file); do
     user=$(echo $l | cut -d"@" -f1)
     pass=$(randompaswd)
-    echo "point 1"
     #
     if useradd --badnames $user -p $(echo $pass | openssl passwd -1 -stdin); then 
-        echo "point 2"
         echo "${user} your password is ${pass}" | sendmail $l
         echo "Created ${user}"
     else
-        echo "point 3"
         echo -e "${pass}\n${pass}" | passwd $user
         echo "${user} your password has been changed to ${pass}" | sendmail $l
     fi
